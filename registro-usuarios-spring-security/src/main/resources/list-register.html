@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+	<header th:replace="layout/layout::header"></header> 
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+		<a class="btn btn-info" th:href="@{/postulant-register}">Registrar postulacion</a>
+		<a class="btn btn-info" href="login.html">Registrar postulacion</a>
+		 <table class="table w-100 border mt-4">
+		 	<thead class="table-danger">
+		 		<tr>
+		 			<th>Id</th>
+		 			<th>Postulante</th>
+		 			<th>E-mail</th>
+		 			<th>Carrera</th>
+		 			<th>Estado</th>
+		 			<th>Evaluador</th>
+		 			<th>Fecha Envio</th>
+		 			<th>Acciones</th>
+				</tr>
+		 	</thead>
+		 	<tbody>
+		 		<tr th:each="register: ${registers}">
+		 			<td th:text="${register.id}"></td>
+		 			<td th:text="${register.postulant.name}"></td>
+		 			<td th:text="${register.postulant.email}"></td>
+		 			<td th:text="${register.postulant.degree.name}"></td>
+		 			<td th:text="${register.status.name}"></td>
+		 			<td th:text="${register.user.name}"></td>
+		 			<td th:text="${register.sendDay}"></td>
+		 			<td><a class="btn btn-primary">Editar</a>
+		 			<a class="btn btn-danger">Eliminar</a></td>
+		 		</tr>
+		 	</tbody>
+		 </table>
+	</div>
+</body>
+</html>

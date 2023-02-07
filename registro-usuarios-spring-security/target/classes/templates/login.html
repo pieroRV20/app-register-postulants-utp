@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+</head>
+<body>
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<img
+						src="https://www.utp.edu.pe/sites/default/files/styles/transformar_webp/public/hero-banner/banner-calidad-mob.png.webp?itok=9mxPGqZm"
+						alt="Image" class="img-fluid">
+				</div>
+				<div class="col-md-6 d-flex align-items-center contents">
+					<div class="row justify-content-center  w-100">
+						<div class="col-md-8">
+							<div class="mb-4">
+								<h3 class="">Bienvenido a <img alt="" width="160px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Utplogonuevo.svg/2560px-Utplogonuevo.svg.png"></h3>
+								<p class="mb-4">Inicie Sesion, porfavor.</p>
+									
+								<div th:if=${param.logout}>
+									<div class="alert alert-info">Ha cerrado sesión
+										exitosamente</div>
+								</div>
+							</div>
+							<form th:action="@{/login}" method="post">
+								<div class="form-group first">
+									<label for="username">Username</label>
+									<input id="username"  name="username" type="text" class="form-control"
+										required autofocus="autofocus" >
+								</div>
+								<div class="form-group last mb-4">
+									<label for="password">Password</label>
+									 <input id="password" type="password"  name="password" class="form-control" required
+							 		autofocus="autofocus" >
+								</div>
+
+								<div th:if=${param.error}>
+									<div class="alert alert-danger">Usuario o contraseña
+										inválidos</div>
+								</div>
+
+								<input type="submit" value="Log In"
+									class="btn btn-block btn-danger">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script 
+		src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
+		integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
+		data-cf-beacon="{&quot;rayId&quot;:&quot;794c8821aa282830&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2022.11.3&quot;,&quot;si&quot;:100}"
+		crossorigin="anonymous"></script>
+
+</body>

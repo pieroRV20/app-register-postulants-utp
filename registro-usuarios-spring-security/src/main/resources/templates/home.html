@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+</head>
+<body>
+	<header th:replace="layout/layout::header"></header>
+	<h2 class="container mt-4">Tus Registros Asignados</h2>
+	<section class="container">
+	<table class="table w-100 border mt-4">
+		 	<thead class="table-dark">
+		 		<tr>
+					<th>Postulante</th>
+		 			<th>E-mail</th>
+		 			<th>Carrera</th>
+		 			<th>Estado</th>
+		 			<th>Evaluador</th>
+		 			<th>Fecha Envio</th>
+		 			<th>Acciones</th>
+				</tr>
+		 	</thead>
+		 	<tbody>
+		 		<tr th:each="register: ${registers}">
+		 			<td th:text="${register.postulant.name}"></td>
+		 			<td th:text="${register.postulant.email}"></td>
+		 			<td th:text="${register.postulant.degree.name}"></td>
+		 			<td th:text="${register.status.name}"></td>
+		 			<td th:text="${register.evaluator== null} ? 'Sin asignar' : ${register.evaluator.name}"></td>
+		 			<td th:text="${register.sendDay}"></td>
+		 			<td><a th:href="@{/evaluation/} + ${register.id}" class="btn btn-primary">Evaluar</a>
+		 			<a th:href="@{/assign/} + ${register.id}" class="btn btn-secondary">Asignar</a>
+		 			<a th:href="@{/delete/} + ${register.id}" class="btn btn-danger">Eliminar</a>
+		 			</td>
+		 		</tr>
+		 	</tbody>
+		 </table>
+		 <a class="btn btn-success mt-4" th:href="@{/postulant-register}">Registrar</a>
+	</section>
+	
+</body>
+</html>
